@@ -4,7 +4,7 @@ import keyMirror from 'keymirror';
 import assign from 'lodash/assign'
 
 var consts = keyMirror({
-  TEST_ACTION: null,
+  YOUR_ACTION_TYPE: null,
   // other action ...
 });
 
