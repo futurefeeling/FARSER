@@ -18,7 +18,7 @@ import GoddessScene from './components_scene/GoddessScene.js';
 import AppActionCreators from './actions/AppActionCreators.js';
 import DrawerScene from './components_scene/DrawerScene.js';
 
-var Drawer = require('react-native-drawer');
+var Drawer = require('./vendor/react-native-drawer');
 var { DRAWER_OFFSET } = require('./constants/ActionTypes.js');
 
 function getDrawerStatusFromStore() {
@@ -66,20 +66,16 @@ var FARSER = React.createClass({
 
   closeDrawer: function() {
     AppActionCreators.setDrawerStatus(false);
-    console.log(this.state);
-    this.refs.drawer.close();
+    if (!this.state.isDrawerOpened) {
+      this.refs.drawer.close();
+    }
   },
 
   openDrawer: function() {
-    console.log(this.state);
     AppActionCreators.setDrawerStatus(true);
-    this.refs.drawer.open();
-  },
-
-  setDrawerState: function(value) {
-    this.setState({
-      isDrawerOpened: value
-    });
+    if (this.state.isDrawerOpened) {
+      this.refs.drawer.open();
+    }
   },
 
   render: function() {
@@ -87,9 +83,7 @@ var FARSER = React.createClass({
       <Drawer ref="drawer"
         type="static"
         openDrawerOffset={DRAWER_OFFSET}
-        panOpenMash={.8}
-        onOpen={() => this.setDrawerState(true)}
-        onClose={() => this.setDrawerState(false)}
+        panOpenMask={.8}
         content={<DrawerScene closeDrawer={this.closeDrawer} />}>
 
         <MainView
