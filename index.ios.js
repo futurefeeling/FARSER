@@ -7,56 +7,103 @@ import React, {
   AppRegistry,
   Component,
   StyleSheet,
+  NavigatorIOS,
   Text,
   View
 } from 'react-native';
 
-import Drawer from 'react-native-drawer';
 
-class MainView extends Component {
-  render() {
+import AppStore from './stores/AppStore.js';
+import GoddessScene from './components_scene/GoddessScene.js';
+import AppActionCreators from './actions/AppActionCreators.js';
+import DrawerScene from './components_scene/DrawerScene.js';
+
+var Drawer = require('react-native-drawer');
+var { DRAWER_OFFSET } = require('./constants/ActionTypes.js');
+
+function getDrawerStatusFromStore() {
+  return {
+    isDrawerOpened: AppStore.getDrawerStatus()
+  }
+}
+
+var MainView = React.createClass({
+
+  render: function() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={{flex: 1}}>
+        <NavigatorIOS
+          style={{flex: 1}}
+          barTintColor='#433a34'
+          titleTextColor='#fff'
+          ref='nav'
+          initialRoute={{
+            component: GoddessScene,
+            title: 'Goddess Time',
+            leftButtonTitle: 'Home',
+            onLeftButtonPress: () => {
+              this.props.drawerStatus ? this.props.closeDrawer() : this.props.openDrawer()
+            }
+          }}
+        />
       </View>
     );
   }
-}
+});
 
-class FARSER extends Component {
-  render() {
+var FARSER = React.createClass({
+  getInitialState: function() {
+    return getDrawerStatusFromStore();
+  },
+
+  componentDidMount: function() {
+    AppStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    AppStore.removeChangeListener(this._onChange);
+  },
+
+  closeDrawer: function() {
+    AppActionCreators.setDrawerStatus(false);
+    console.log(this.state);
+    this.refs.drawer.close();
+  },
+
+  openDrawer: function() {
+    console.log(this.state);
+    AppActionCreators.setDrawerStatus(true);
+    this.refs.drawer.open();
+  },
+
+  setDrawerState: function(value) {
+    this.setState({
+      isDrawerOpened: value
+    });
+  },
+
+  render: function() {
     return (
-      <MainView />
-    );
-  }
-}
+      <Drawer ref="drawer"
+        type="static"
+        openDrawerOffset={DRAWER_OFFSET}
+        panOpenMash={.8}
+        onOpen={() => this.setDrawerState(true)}
+        onClose={() => this.setDrawerState(false)}
+        content={<DrawerScene closeDrawer={this.closeDrawer} />}>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+        <MainView
+          drawerStatus={this.state.isDrawerOpened}
+          closeDrawer={this.closeDrawer}
+          openDrawer={this.openDrawer}/>
+
+      </Drawer>
+    );
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
+  _onChange: function() {
+    this.setState(getDrawerStatusFromStore());
+  }
 });
 
 AppRegistry.registerComponent('FARSER', () => FARSER);

@@ -5,6 +5,7 @@ import assign from 'lodash/assign'
 
 var consts = keyMirror({
   YOUR_ACTION_TYPE: null,
+  SET_DRAWER_STATUS: null
   // other action ...
 });
 

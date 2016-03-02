@@ -3,10 +3,10 @@ import AppDispatcher from '../dispatcher/AppDispatcher.js';
 import ActionTypes from '../constants/ActionTypes.js';
 
 module.exports = {
-  receiveData = function (data) {
+  setDrawerStatus: function (status) {
     AppDispatcher.dispatch({
-      type: ActionTypes.YOUR_ACTION_TYPE,
-      data: data
+      type: ActionTypes.SET_DRAWER_STATUS,
+      status: status
     })
   }
 }
