@@ -6,6 +6,7 @@ var { Dimensions } = React;
 var SCREEN_WIDTH = Dimensions.get('window').width;
 
 var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
+var Search = require('../components/Search.js');
 
 var {
   StyleSheet,
@@ -17,13 +18,15 @@ var {
   Text,
   ListView,
   TouchableHighlight,
+  StatusBarIOS
 } = React;
+
+StatusBarIOS.setStyle('light-content');
 
 var DrawerScene = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Logo />
         <Search />
         <Actions />
       </View>
@@ -46,23 +49,6 @@ var Actions = React.createClass({
   },
 });
 
-var Search = React.createClass({
-  render: function() {
-    return (
-      <View style={{ marginTop: -8 }}>
-        <View style={styles.searchSeparator} />
-        <View style={styles.searchView} >
-          <Image
-            style={{ width: 15, height: 15 }}
-            source={require('image!search-icon-md')} />
-          <Text style={styles.searchText} >Search</Text>
-        </View>
-        <View style={styles.searchSeparator} />
-      </View>
-    );
-  }
-});
-
 var Logo = React.createClass({
   render: function() {
     return (
@@ -81,8 +67,9 @@ var imgWidth = 22,
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#211F27',
-    flex: 1
+    backgroundColor: '#433a34',
+    flex: 1,
+    marginRight: DRAWER_OFFSET
   },
 
   contentContainer: {

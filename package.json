@@ -14,6 +14,7 @@
     "keymirror": "^0.1.1",
     "lodash": "^4.5.1",
     "react-native": "^0.20.0",
-    "react-native-drawer": "^1.8.0"
+    "react-native-drawer": "^1.8.0",
+    "react-native-vector-icons": "^1.2.1"
   }
 }

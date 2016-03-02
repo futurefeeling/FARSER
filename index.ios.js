@@ -1,16 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
-import React, {
+
+var React = require('react-native');
+
+var {
   AppRegistry,
-  Component,
   StyleSheet,
-  NavigatorIOS,
   Text,
-  View
-} from 'react-native';
+  View,
+  Image,
+  ScrollView,
+  NavigatorIOS,
+  TouchableHighlight,
+  StatusBarIOS
+} = React;
 
 
 import AppStore from './stores/AppStore.js';
@@ -18,6 +20,7 @@ import GoddessScene from './components_scene/GoddessScene.js';
 import AppActionCreators from './actions/AppActionCreators.js';
 import DrawerScene from './components_scene/DrawerScene.js';
 
+var Icon = require('react-native-vector-icons/FontAwesome')
 var Drawer = require('./vendor/react-native-drawer');
 var { DRAWER_OFFSET } = require('./constants/ActionTypes.js');
 
@@ -27,20 +30,39 @@ function getDrawerStatusFromStore() {
   }
 }
 
+StatusBarIOS.setStyle('light-content'); // 状态栏文字颜色白色
+
+// 关于icon作为图片的使用：
+// https://github.com/oblador/react-native-vector-icons#usage-as-png-imagesource-object
 var MainView = React.createClass({
+  getInitialState: function() {
+    return {
+      selectedTab: 'home',
+    };
+  },
+
+  componentWillMount: function() {
+    // https://github.com/facebook/react-native/issues/1403 prevents this to work for initial load
+    Icon.getImageSource('bars', 30).then((source) => this.setState({ barsIcon: source }));
+  },
 
   render: function() {
+    if(!this.state.barsIcon) {
+      return false;
+    }
+
     return (
       <View style={{flex: 1}}>
         <NavigatorIOS
           style={{flex: 1}}
-          barTintColor='#433a34'
+          barTintColor='#df7454'
           titleTextColor='#fff'
+          tintColor='#fff'
           ref='nav'
           initialRoute={{
             component: GoddessScene,
             title: 'Goddess Time',
-            leftButtonTitle: 'Home',
+            leftButtonIcon: this.state.barsIcon,
             onLeftButtonPress: () => {
               this.props.drawerStatus ? this.props.closeDrawer() : this.props.openDrawer()
             }
