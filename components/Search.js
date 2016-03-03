@@ -27,11 +27,13 @@ var Search = React.createClass({
     return (
       <View style={SearchStyle.container}>
         <View style={SearchStyle.searchView} >
-            <Icon name="search" size={20} style={SearchStyle.searchIcon}/>
-            <TextInput
-              style={SearchStyle.textInput}
-              onChangeText={(text) => this.setState({text})}
-              value={this.state.text}
+          <Icon name="search" size={18} style={SearchStyle.searchIcon}/>
+          <TextInput
+            style={SearchStyle.textInput}
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.text}
+            placeholder='Search something ...'
+            placeholderTextColor='#b1b2b3'
             />
         </View>
       </View>
@@ -41,24 +43,31 @@ var Search = React.createClass({
 
 var SearchStyle = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#433a34',
-    marginTop: 20
+    marginTop: 25
   },
   searchView: {
-    padding: 2,
-    paddingLeft: 20
+    backgroundColor: '#433a34',
+    flexDirection: 'row',
+    height: 38,
+    marginLeft: 20,
+    marginRight: 20,
+    borderColor: '#101010',
+    borderWidth: 1,
+    borderRadius: 40
   },
   searchIcon: {
-    width: 20,
-    height: 20,
+    width: 36,
+    height: 36,
+    padding: 8,
+    marginLeft: 4,
+    borderRadius: 18,
     color: '#fff'
   },
   textInput: {
-    height: 40,
-    borderColor: '#101010',
-    borderWidth: 1,
-    borderRadius: 20
+    flex: 1,
+    height: 36,
+    paddingRight: 10,
+    color: '#fff'
   }
 });
 
