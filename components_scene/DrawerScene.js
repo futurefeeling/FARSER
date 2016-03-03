@@ -8,6 +8,7 @@ var SCREEN_WIDTH = Dimensions.get('window').width;
 var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
 var Search = require('../components/Search.js');
 var Logo = require('../components/Logo.js');
+var MenuList = require('../components/MenuList.js');
 
 var {
   StyleSheet,
@@ -30,13 +31,11 @@ var DrawerScene = React.createClass({
       <View style={DrawerSceneStyle.container}>
         <Search />
         <Logo />
+        <MenuList closeDrawer={this.props.closeDrawer}/>
       </View>
     );
   }
 });
-
-var imgWidth = 22,
-  imgHeight = 30;
 
 var DrawerSceneStyle = StyleSheet.create({
   container: {

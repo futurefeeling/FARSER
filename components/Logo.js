@@ -19,31 +19,31 @@ var Icon = require('react-native-vector-icons/FontAwesome');
 var Logo = React.createClass({
   getDefaultProps: function(){
     return {
-      name: 'Unkown',
-      location: 'Earth'
+      image: 'logo',
+      name: 'FARSER',
+      location: 'Guangzhou China'
     }
   },
 
-  loadError: function(e){
-    console.log('error');
-  },
-
-  loadSuccess: function(e) {
-    console.log('success');
-  },
-
   render: function() {
-    var img = require('image!logo');
-    console.log(img);
+    var images = {
+      logo: require('../iamges/logo.png')
+    }
+
+    var image = images[this.props.image];
+
     return (
       <View style={LogoStyle.container}>
         <View style={LogoStyle.logoBox}>
           <Image
             style={LogoStyle.logoImg}
-            source={require('image!logo')}
-            onLoad={this.loadSuccess}
-            onError={this.loadError}
+            source={image}
           />
+        </View>
+        <Text style={LogoStyle.name}>{this.props.name}</Text>
+        <View style={LogoStyle.locationBox}>
+          <Icon name='map-marker' style={LogoStyle.locationIcon}/>
+          <Text style={LogoStyle.location}>{this.props.location}</Text>
         </View>
       </View>
     );
@@ -52,22 +52,45 @@ var Logo = React.createClass({
 
 var LogoStyle = {
   container: {
-    marginTop: 10,
-    height: 100,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 10
   },
   logoBox: {
-    height: 100,
-    width: 100,
-    borderRadius: 100,
-    backgroundColor: '#544b44',
     alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: '#544b44',
+    borderRadius: 96,
+    height: 96,
+    justifyContent: 'center',
+    width: 96
   },
   logoImg: {
+    borderRadius: 40,
     height: 80,
-    width: 80,
-    borderRadius: 40
+    width: 80
+  },
+  name: {
+    color: '#aaaaaa',
+    fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 2,
+    marginTop: 6
+  },
+  locationBox: {
+    flexDirection: 'row',
+    marginTop: 2,
+    alignItems: 'center'
+  },
+  locationIcon: {
+    color: '#4f9fcf',
+    fontSize: 16,
+    height: 16,
+    width: 16
+  },
+  location: {
+    color: '#aaaaaa',
+    fontSize: 12,
+    fontWeight: 'bold',
+    letterSpacing: 1
   }
 }
 
