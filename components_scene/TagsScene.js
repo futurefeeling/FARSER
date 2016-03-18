@@ -22,7 +22,7 @@ var {
   StatusBarIOS,
 } = React;
 
-var Tags = React.createClass({
+var TagsScene = React.createClass({
   getInitialState: function() {
     return {
       start: true
@@ -38,7 +38,7 @@ var Tags = React.createClass({
   },
 
   render: function() {
-    var barIcon = <Icon name='bars' size={30} color='#fff'/>
+    var barIcon = <Icon name='bars' size={30} color='#fff' style={TagsSceneStyle.homeIcon}/>
     return (
         <View>
           <NavigationBar
@@ -46,18 +46,16 @@ var Tags = React.createClass({
             tintColor='#29d445'
             leftButton={barIcon}
             />
-          <Text>22.1</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-
+          <Text>TagsScene</Text>
         </View>
     );
   }
 });
 
-module.exports = Tags;
+var TagsSceneStyle = {
+  homeIcon: {
+    marginLeft: 10
+  }
+}
+
+module.exports = TagsScene;

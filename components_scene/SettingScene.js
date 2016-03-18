@@ -22,7 +22,7 @@ var {
   StatusBarIOS,
 } = React;
 
-var Setting = React.createClass({
+var SettingScene = React.createClass({
   getInitialState: function() {
     return {
       start: true
@@ -38,7 +38,7 @@ var Setting = React.createClass({
   },
 
   render: function() {
-    var barIcon = <Icon name='bars' size={30} color='#fff'/>
+    var barIcon = <Icon name='bars' size={30} color='#fff' style={SettingSceneStyle.homeIcon}/>
     return (
         <View>
           <NavigationBar
@@ -46,18 +46,16 @@ var Setting = React.createClass({
             tintColor='#111'
             leftButton={barIcon}
             />
-          <Text>22.1</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-
+          <Text>SettingScene</Text>
         </View>
     );
   }
 });
 
-module.exports = Setting;
+var SettingSceneStyle = {
+  homeIcon: {
+    marginLeft: 10
+  }
+}
+
+module.exports = SettingScene;

@@ -22,7 +22,7 @@ var {
   StatusBarIOS,
 } = React;
 
-var Blog = React.createClass({
+var BlogScene = React.createClass({
   getInitialState: function() {
     return {
       start: true
@@ -38,7 +38,7 @@ var Blog = React.createClass({
   },
 
   render: function() {
-    var barIcon = <Icon name='bars' size={30} color='#fff'/>
+    var barIcon = <Icon name='bars' size={30} color='#fff' style={BlogSceneStyle.homeIcon}/>
     return (
         <View>
           <NavigationBar
@@ -46,18 +46,16 @@ var Blog = React.createClass({
             tintColor='#03a9f4'
             leftButton={barIcon}
             />
-          <Text>22.1</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-
+          <Text>BlogScene</Text>
         </View>
     );
   }
 });
 
-module.exports = Blog;
+var BlogSceneStyle = {
+  homeIcon: {
+    marginLeft: 10
+  }
+}
+
+module.exports = BlogScene;

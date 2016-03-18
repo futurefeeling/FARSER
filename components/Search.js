@@ -27,7 +27,7 @@ var Search = React.createClass({
     return (
       <View style={SearchStyle.container}>
         <View style={SearchStyle.searchView} >
-          <Icon name="search" size={18} color="#fff" style={SearchStyle.searchIcon}/>
+          <Icon name="search" size={18} color="#fff" />
           <TextInput
             style={SearchStyle.textInput}
             onChangeText={(text) => this.setState({text})}

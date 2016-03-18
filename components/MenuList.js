@@ -39,11 +39,11 @@ var MenuList = React.createClass({
 
   handleClickMenu: function(str) {
     var title = upperFirst(str);
-    var component = ROUTES[str]
+    var component = ROUTES[str];
     var changeNavigator = this.props.changeNavigator;
     changeNavigator({
       title: title,
-      component: BlogScene
+      component: component
     });
   },
 
@@ -51,31 +51,31 @@ var MenuList = React.createClass({
     return (
       <View style={MenuListStyle.container}>
         <View style={MenuListStyle.dividingLine}/>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('goddess')}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'goddess')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='heart' color='#df7454' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>GODDESS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('blog')}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'blog')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='rss' color='#03a9f4' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>BLOG</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('news')}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'news')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='newspaper-o' color='#fff' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>NEWS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('tags')}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'tags')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='tags' color='#29d445' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>TAGS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('setting')}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'setting')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='wrench' color='#111' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>SETTING</Text>

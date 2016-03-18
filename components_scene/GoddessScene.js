@@ -37,7 +37,7 @@ var GoddessScene = React.createClass({
   },
 
   render: function() {
-    var barIcon = <Icon name='bars' size={30} color='#fff'/>
+    var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon}/>
     return (
         <View>
           <NavigationBar
@@ -45,18 +45,16 @@ var GoddessScene = React.createClass({
             tintColor='#df7454'
             leftButton={barIcon}
             />
-          <Text>22.1</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-          <Text>22</Text>
-
+          <Text>GoddessScene</Text>
         </View>
     );
   }
 });
+
+var GoddessSceneStyle = {
+  homeIcon: {
+    marginLeft: 10
+  }
+}
 
 module.exports = GoddessScene;
