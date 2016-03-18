@@ -42,7 +42,7 @@ var TagsScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: 'Tags', tintColor: '#fff'}}
+            title={{title: '备忘', tintColor: '#fff'}}
             tintColor='#34495e'
             leftButton={barIcon}
             />

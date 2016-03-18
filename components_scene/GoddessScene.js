@@ -41,7 +41,7 @@ var GoddessScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: 'Goddess Time', tintColor: '#fff'}}
+            title={{title: '女神时刻', tintColor: '#fff'}}
             tintColor='#df7454'
             leftButton={barIcon}
             />

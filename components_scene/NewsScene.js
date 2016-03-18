@@ -42,7 +42,7 @@ var NewsScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: 'News', tintColor: '#fff'}}
+            title={{title: '新闻', tintColor: '#fff'}}
             tintColor='#1abc9c'
             leftButton={barIcon}
             />

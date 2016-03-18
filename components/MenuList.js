@@ -1,14 +1,6 @@
 'use strict';
 
 var React = require('react-native');
-var upperFirst = require('lodash/upperFirst');
-
-var GoddessScene = require('../components_scene/GoddessScene.js');
-var BlogScene = require('../components_scene/BlogScene.js');
-var NewsScene = require('../components_scene/NewsScene.js');
-var TagsScene = require('../components_scene/TagsScene.js');
-var SettingScene = require('../components_scene/SettingScene.js');
-
 var {
   StyleSheet,
   View,
@@ -18,9 +10,16 @@ var {
 } = React;
 
 var { Dimensions } = React;
-var SCREEN_WIDTH = Dimensions.get('window').width;
-var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
+
+var GoddessScene = require('../components_scene/GoddessScene.js');
+var BlogScene = require('../components_scene/BlogScene.js');
+var NewsScene = require('../components_scene/NewsScene.js');
+var TagsScene = require('../components_scene/TagsScene.js');
+var SettingScene = require('../components_scene/SettingScene.js');
 var Icon = require('react-native-vector-icons/FontAwesome');
+var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
+
+var SCREEN_WIDTH = Dimensions.get('window').width;
 
 var ROUTES = {
   goddess: GoddessScene,
@@ -38,11 +37,9 @@ var MenuList = React.createClass({
   },
 
   handleClickMenu: function(str) {
-    var title = upperFirst(str);
     var component = ROUTES[str];
     var changeNavigator = this.props.changeNavigator;
     changeNavigator({
-      title: title,
       component: component
     });
   },
