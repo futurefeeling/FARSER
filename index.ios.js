@@ -10,75 +10,35 @@ var {
   Image,
   ScrollView,
   NavigatorIOS,
+  Navigator,
   TouchableHighlight,
   StatusBarIOS
 } = React;
 
-
 import AppStore from './stores/AppStore.js';
-import GoddessScene from './components_scene/GoddessScene.js';
 import AppActionCreators from './actions/AppActionCreators.js';
 import DrawerScene from './components_scene/DrawerScene.js';
 
+import GoddessScene from './components_scene/GoddessScene.js';
+
+var assign = require('lodash/assign');
 var Icon = require('react-native-vector-icons/FontAwesome')
 var Drawer = require('./vendor/react-native-drawer');
 var { DRAWER_OFFSET } = require('./constants/ActionTypes.js');
 
-function getDrawerStatusFromStore() {
-  return {
-    isDrawerOpened: AppStore.getDrawerStatus()
-  }
+function getStatusFromStore() {
+  return AppStore.getStore();
 }
-
-StatusBarIOS.setStyle('light-content'); // 状态栏文字颜色白色
 
 // 关于icon作为图片的使用：
 // https://github.com/oblador/react-native-vector-icons#usage-as-png-imagesource-object
-var MainView = React.createClass({
-  getInitialState: function() {
-    return {
-      selectedTab: 'home',
-    };
-  },
-
-  componentWillMount: function() {
-    // https://github.com/facebook/react-native/issues/1403 prevents this to work for initial load
-    Icon.getImageSource('bars', 30).then((source) => this.setState({ barsIcon: source }));
-  },
-
-  render: function() {
-    if(!this.state.barsIcon) {
-      return false;
-    }
-
-    return (
-      <View style={{flex: 1}}>
-        <NavigatorIOS
-          style={{flex: 1}}
-          barTintColor='#df7454'
-          titleTextColor='#fff'
-          tintColor='#fff'
-          ref='nav'
-          initialRoute={{
-            component: GoddessScene,
-            title: 'Goddess Time',
-            leftButtonIcon: this.state.barsIcon,
-            onLeftButtonPress: () => {
-              this.props.drawerStatus ? this.props.closeDrawer() : this.props.openDrawer()
-            }
-          }}
-        />
-      </View>
-    );
-  }
-});
-
 var FARSER = React.createClass({
   getInitialState: function() {
-    return getDrawerStatusFromStore();
+    return getStatusFromStore();
   },
 
   componentDidMount: function() {
+    AppActionCreators.setDrawerStatus(false);
     AppStore.addChangeListener(this._onChange);
   },
 
@@ -100,25 +60,45 @@ var FARSER = React.createClass({
     }
   },
 
+  changeNavigator: function(route) {
+    this.refs.nav.replace(route);
+    this.closeDrawer();
+  },
+
+  renderScene: function(route, navigator) {
+    return <route.component route={route} navigator={navigator} />
+  },
+
   render: function() {
+    var initialRoute = {
+      component: GoddessScene
+    };
+
     return (
       <Drawer ref="drawer"
+        ref="drawer"
         type="static"
+        content={<DrawerScene changeNavigator={this.changeNavigator} />}
         openDrawerOffset={DRAWER_OFFSET}
-        panOpenMask={.8}
-        content={<DrawerScene closeDrawer={this.closeDrawer} />}>
+        styles={{main: {shadowColor: "#000000", shadowOpacity: 0.3, shadowRadius: 15}}}
+        captureGestures={false}
+        tweenDuration={100}
+        negotiatePan={true}
+        panThreshold={0.08}
+        panOpenMask={0.35}
+        disabled={this.state.drawerDisabled}
+        tweenHandler={Drawer.tweenPresets.parallax}>
 
-        <MainView
-          drawerStatus={this.state.isDrawerOpened}
-          closeDrawer={this.closeDrawer}
-          openDrawer={this.openDrawer}/>
-
+        <Navigator
+          ref='nav'
+          initialRoute={initialRoute}
+          renderScene={this.renderScene}/>
       </Drawer>
     );
   },
 
   _onChange: function() {
-    this.setState(getDrawerStatusFromStore());
+    this.setState(getStatusFromStore());
   }
 });
 

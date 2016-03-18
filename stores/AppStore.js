@@ -8,11 +8,16 @@ import assign from 'lodash/assign'
 const CHANGE_EVENT = 'change';
 
 var _store = {
-  isDrawerOpened: false
+  isDrawerOpened: false,
+  scene: 'GoddessScene'
 }
 
 function _setStore(data) {
   _store.isDrawerOpened = data.isDrawerOpened;
+}
+
+function _setScene(sceneName) {
+  _store.scene = sceneName;
 }
 
 function _setDrawerStatus(status) {
@@ -46,6 +51,10 @@ AppStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
     case ActionTypes.SET_DRAWER_STATUS:
       _setDrawerStatus(action.status);
+      AppStore.emitChange();
+      break;
+    case ActionTypes.SET_SCENE:
+      _setScene(action.sceneName);
       AppStore.emitChange();
       break;
     default:

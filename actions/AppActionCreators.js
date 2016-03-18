@@ -8,5 +8,11 @@ module.exports = {
       type: ActionTypes.SET_DRAWER_STATUS,
       status: status
     })
+  },
+  setScene: function (sceneName) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.SET_SCENE,
+      sceneName: sceneName
+    })
   }
 }

@@ -27,7 +27,7 @@ var Search = React.createClass({
     return (
       <View style={SearchStyle.container}>
         <View style={SearchStyle.searchView} >
-          <Icon name="search" size={18} style={SearchStyle.searchIcon}/>
+          <Icon name="search" size={18} color="#fff" style={SearchStyle.searchIcon}/>
           <TextInput
             style={SearchStyle.textInput}
             onChangeText={(text) => this.setState({text})}
@@ -53,15 +53,14 @@ var SearchStyle = StyleSheet.create({
     marginRight: 20,
     borderColor: '#101010',
     borderWidth: 1,
-    borderRadius: 40
+    borderRadius: 20
   },
   searchIcon: {
     width: 36,
     height: 36,
     padding: 8,
-    marginLeft: 4,
-    borderRadius: 18,
-    color: '#fff'
+    marginLeft: 8,
+    borderRadius: 18
   },
   textInput: {
     flex: 1,

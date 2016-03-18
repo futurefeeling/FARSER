@@ -1,6 +1,13 @@
 'use strict';
 
 var React = require('react-native');
+var upperFirst = require('lodash/upperFirst');
+
+var GoddessScene = require('../components_scene/GoddessScene.js');
+var BlogScene = require('../components_scene/BlogScene.js');
+var NewsScene = require('../components_scene/NewsScene.js');
+var TagsScene = require('../components_scene/TagsScene.js');
+var SettingScene = require('../components_scene/SettingScene.js');
 
 var {
   StyleSheet,
@@ -15,6 +22,14 @@ var SCREEN_WIDTH = Dimensions.get('window').width;
 var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
 var Icon = require('react-native-vector-icons/FontAwesome');
 
+var ROUTES = {
+  goddess: GoddessScene,
+  blog: BlogScene,
+  news: NewsScene,
+  tags: TagsScene,
+  setting: SettingScene
+}
+
 var MenuList = React.createClass({
   getInitialState: function() {
     return {
@@ -22,39 +37,45 @@ var MenuList = React.createClass({
     }
   },
 
-  handleClickMenu: function(e) {
-    this.props.closeDrawer();
+  handleClickMenu: function(str) {
+    var title = upperFirst(str);
+    var component = ROUTES[str]
+    var changeNavigator = this.props.changeNavigator;
+    changeNavigator({
+      title: title,
+      component: BlogScene
+    });
   },
 
   render: function() {
     return (
       <View style={MenuListStyle.container}>
         <View style={MenuListStyle.dividingLine}/>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('goddess')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='heart' color='#df7454' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>GODDESS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('blog')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='rss' color='#03a9f4' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>BLOG</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('news')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='newspaper-o' color='#fff' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>NEWS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('tags')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='tags' color='#29d445' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>TAGS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu}>
+        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu('setting')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='wrench' color='#111' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>SETTING</Text>

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react-native';
+
 import NavigationBar from 'react-native-navbar';
 
 var Icon = require('react-native-vector-icons/FontAwesome');
@@ -18,10 +19,10 @@ var {
   TouchableHighlight,
   ActivityIndicatorIOS,
   AlertIOS,
-  StatusBar,
+  StatusBarIOS,
 } = React;
 
-var GoddessScene = React.createClass({
+var Blog = React.createClass({
   getInitialState: function() {
     return {
       start: true
@@ -41,8 +42,8 @@ var GoddessScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: 'Goddess Time', tintColor: '#fff'}}
-            tintColor='#df7454'
+            title={{title: 'Blog', tintColor: '#fff'}}
+            tintColor='#03a9f4'
             leftButton={barIcon}
             />
           <Text>22.1</Text>
@@ -59,4 +60,4 @@ var GoddessScene = React.createClass({
   }
 });
 
-module.exports = GoddessScene;
+module.exports = Blog;

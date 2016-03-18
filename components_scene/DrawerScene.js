@@ -31,7 +31,7 @@ var DrawerScene = React.createClass({
       <View style={DrawerSceneStyle.container}>
         <Search />
         <Logo />
-        <MenuList closeDrawer={this.props.closeDrawer}/>
+        <MenuList changeNavigator={this.props.changeNavigator}/>
       </View>
     );
   }
