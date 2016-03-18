@@ -2,6 +2,8 @@
 
 var React = require('react-native');
 
+require('./navbarStyle.js');
+
 var {
   AppRegistry,
   StyleSheet,

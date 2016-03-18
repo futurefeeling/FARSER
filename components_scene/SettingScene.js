@@ -43,7 +43,7 @@ var SettingScene = React.createClass({
         <View>
           <NavigationBar
             title={{title: 'Setting', tintColor: '#fff'}}
-            tintColor='#111'
+            tintColor='#433a34'
             leftButton={barIcon}
             />
           <Text>SettingScene</Text>
