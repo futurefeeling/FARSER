@@ -12,14 +12,8 @@ var {
   Text,
   View,
   Image,
-  Animated,
-  LayoutAnimation,
   ScrollView,
-  NavigatorIOS,
   TouchableHighlight,
-  ActivityIndicatorIOS,
-  AlertIOS,
-  StatusBarIOS,
 } = React;
 
 var BlogScene = React.createClass({
@@ -42,8 +36,9 @@ var BlogScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: '博客', tintColor: '#fff'}}
+            title={{title: 'BLOG', tintColor: '#fff'}}
             tintColor='#3498db'
+            statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             leftButton={barIcon}
             />
           <Text>BlogScene</Text>

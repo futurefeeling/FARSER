@@ -45,34 +45,35 @@ var MenuList = React.createClass({
   },
 
   render: function() {
+    var underlayColor = '#544b44';
     return (
       <View style={MenuListStyle.container}>
         <View style={MenuListStyle.dividingLine}/>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'goddess')}>
+        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'goddess')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='heart' color='#df7454' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>GODDESS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'blog')}>
+        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'blog')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='rss' color='#03a9f4' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>BLOG</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'news')}>
+        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'news')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='newspaper-o' color='#fff' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>NEWS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'tags')}>
+        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'tags')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='tags' color='#29d445' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>TAGS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor='#544b44' onPress={this.handleClickMenu.bind(this, 'setting')}>
+        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'setting')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='wrench' color='#111' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>SETTING</Text>

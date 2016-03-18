@@ -12,13 +12,7 @@ var {
   View,
   Image,
   Animated,
-  LayoutAnimation,
-  ScrollView,
-  NavigatorIOS,
   TouchableHighlight,
-  ActivityIndicatorIOS,
-  AlertIOS,
-  StatusBar,
 } = React;
 
 var GoddessScene = React.createClass({
@@ -41,8 +35,9 @@ var GoddessScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: '女神时刻', tintColor: '#fff'}}
+            title={{title: 'GODDESS', tintColor: '#fff'}}
             tintColor='#df7454'
+            statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             leftButton={barIcon}
             />
           <Text>GoddessScene</Text>

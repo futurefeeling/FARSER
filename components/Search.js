@@ -51,7 +51,7 @@ var SearchStyle = StyleSheet.create({
     height: 38,
     marginLeft: 20,
     marginRight: 20,
-    borderColor: '#101010',
+    borderColor: '#34495e',
     borderWidth: 1,
     borderRadius: 20
   },
