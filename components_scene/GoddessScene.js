@@ -4,8 +4,10 @@ import React from 'react-native';
 import NavigationBar from 'react-native-navbar';
 
 var navbarStyle = require('../navbarStyle.js');
-
 var Icon = require('react-native-vector-icons/FontAwesome');
+var GoddessStore = require('../stores/GoddessStore.js');
+var Message = require('../components/Message.js');
+var GoddessUtils = require('../utils/GoddessUtils.js');
 
 var GODDESS_COLOR = '#df7454';
 
@@ -15,6 +17,7 @@ var {
   Text,
   View,
   Image,
+  ListView,
   Animated,
   Easing,
   TouchableHighlight,
@@ -22,9 +25,41 @@ var {
 
 var TIMES = 100;
 
-var GoddessScene = React.createClass({
+function getStatusFromStore() {
+  return GoddessStore.getStore();
+}
+
+var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+var MessageList = React.createClass({
   getInitialState: function() {
     return {
+      dataSource: ds.cloneWithRows(this.props.messageList),
+      loaded: false
+    }
+  },
+  _renderRow: function(){
+    return (
+      <Message />
+    )
+  },
+  render: function() {
+    console.log(this.props);
+    return (
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={this._renderRow}
+        style={MessageListStyle.container}>
+        <Message />
+      </ListView>
+    );
+  }
+});
+
+var GoddessScene = React.createClass({
+  getInitialState: function() {
+    GoddessUtils.getData();
+    return {
+      messages: getStatusFromStore(),
       rotateValue: new Animated.Value(0)
     }
   },
@@ -35,7 +70,7 @@ var GoddessScene = React.createClass({
       toValue: 50*TIMES,
       duration: 800*TIMES,
       easing: Easing.linear
-    }).start(this._startAnimation.bind(this));
+    }).start(this._startAnimation);
   },
 
   componentDidMount: function () {
@@ -48,7 +83,6 @@ var GoddessScene = React.createClass({
 
   render: function() {
     var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon}/>;
-
     return (
         <View>
           <NavigationBar
@@ -72,6 +106,7 @@ var GoddessScene = React.createClass({
                 ]}>
               </Animated.Image>
             </View>
+            <MessageList messages={this.state.messages}/>
           </View>
         </View>
     );
@@ -99,6 +134,12 @@ var GoddessSceneStyle = {
     borderColor: GODDESS_COLOR,
     height: 70,
     width: 70
+  }
+}
+
+var MessageListStyle = {
+  container: {
+    marginTop: 20
   }
 }
 
