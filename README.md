@@ -1,0 +1,2 @@
+- cd FARSER
+- npm start
