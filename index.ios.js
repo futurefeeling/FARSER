@@ -60,13 +60,27 @@ var FARSER = React.createClass({
     }
   },
 
+  handlePressBtn: function(){
+    if (this.state.isDrawerOpened) {
+      AppActionCreators.setDrawerStatus(false);
+      this.refs.drawer.close();
+    } else {
+      AppActionCreators.setDrawerStatus(true);
+      this.refs.drawer.open();
+    }
+  },
+
   changeNavigator: function(route) {
     this.refs.nav.replace(route);
     this.closeDrawer();
   },
 
   renderScene: function(route, navigator) {
-    return <route.component route={route} navigator={navigator} />
+    return <route.component
+      route={route}
+      navigator={navigator}
+      handlePressBtn={this.handlePressBtn}
+    />
   },
 
   render: function() {

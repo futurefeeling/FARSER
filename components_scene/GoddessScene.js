@@ -23,7 +23,159 @@ import React, {
   ActivityIndicatorIOS
 } from 'react-native';
 
+class MovieList extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      movies: [],
+      loaded: false,
+      count: 20,
+      start: 0,
+      total: 0,
+    };
+
+    this.dataSource = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2
+    });
+
+    this.REQUEST_URL = 'https://api.douban.com/v2/movie/top250';
+
+    this.fetchData();
+
+  }
+
+  requestURL(
+    url = this.REQUEST_URL,
+    count = this.state.count,
+    start = this.state.start
+  ) {
+    return (
+      `${url}?count=${count}&start=${start}`
+    );
+  }
+
+  fetchData() {
+    fetch(this.requestURL())
+      .then(response => response.json())
+      .then(responseData => {
+        let newStart = responseData.start + responseData.count;
+        this.setState({
+          movies: responseData.subjects,
+          loaded: true,
+          total: responseData.total,
+          start: newStart,
+        });
+      })
+      .done();
+  }
+
+  renderMovieList(movie) {
+    return (
+      <View>
+        <View style={styles.item}>
+          <View style={styles.itemImage}>
+            <Image
+              source={{uri: movie.images.large}}
+              style={styles.image}
+             />
+          </View>
+          <View style={styles.itemContent}>
+            <Text style={styles.itemHeader}>{movie.title}</Text>
+            <Text style={styles.itemMeta}>
+              {movie.original_title} ( {movie.year} )
+            </Text>
+            <Text style={styles.redText}>
+              {movie.rating.average}
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
+  loadMore() {
+    fetch(this.requestURL())
+      .then(response => response.json())
+      .then(responseData => {
+        let newStart = responseData.start + responseData.count;
+        this.setState({
+          movies: [...this.state.movies, ...responseData.subjects],
+          start: newStart
+        });
+      })
+      .done();
+  }
+
+  onEndReached() {
+    console.log(
+      `reached start:${this.state.start}, total:${this.state.total}`
+    );
+
+    // if (this.state.total > this.state.start) {
+    //   this.loadMore();
+    // }
+  }
+
+  renderFooter() {
+    if (this.state.total > this.state.start) {
+      return (
+        <View
+          style={{
+            marginVertical: 20,
+            paddingBottom: 50,
+            alignSelf: 'center'
+          }}
+        >
+          <ActivityIndicatorIOS />
+        </View>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            marginVertical: 20,
+            paddingBottom: 50,
+            alignSelf: 'center'
+          }}
+        >
+          <Text
+            style={{
+              color: 'rgba(0, 0, 0, 0.3)'
+            }}
+          >no more load :D</Text>
+        </View>
+      );
+    }
+  }
+
+  render() {
+    if (!this.state.loaded) {
+      return (
+        <View style={{backgroundColor: '#eae7ff', flex: 1}}>
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <ActivityIndicatorIOS
+              size="large"
+              color="#6435c9"
+            />
+          </View>
+        </View>
+      );
+    }
+    return (
+      <View style={{backgroundColor: '#eae7ff', flex: 1}}>
+        <ListView
+          renderFooter={this.renderFooter.bind(this)}
+          pageSize={this.state.count}
+          onEndReached={this.onEndReached.bind(this)}
+          initialListSize={this.state.count}
+          dataSource={this.dataSource.cloneWithRows(this.state.movies)}
+          renderRow={this.renderMovieList.bind(this)}
+        />
+      </View>
+    );
+  }
+}
 
 function getStatusFromStore() {
   return GoddessStore.getStore();
@@ -46,7 +198,7 @@ class GoddessScene extends React.Component {
   }
 
   render() {
-      var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon}/>;
+      var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon} onPress={this.props.handlePressBtn}/>;
 
       return (
           <View style={GoddessSceneStyle.container}>
@@ -57,35 +209,7 @@ class GoddessScene extends React.Component {
               leftButton={barIcon}
               />
             <ScrollView>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
-              <Text style={{height: 40}}>test</Text>
+              <MovieList />
             </ScrollView>
           </View>
         )
@@ -93,6 +217,81 @@ class GoddessScene extends React.Component {
 
   _onChange() {
     this.setState({messages: getStatusFromStore()});
+  }
+}
+
+var styles = {
+  item: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: 'rgba(100, 53, 201, 0.1)',
+    paddingBottom: 6,
+    paddingTop: 6,
+  },
+  itemContent: {
+    flex: 1,
+    marginLeft: 13,
+    marginTop: 6,
+  },
+  itemHeader: {
+    fontSize: 18,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: '300',
+    color: '#6435c9',
+    marginBottom: 6,
+  },
+  itemMeta: {
+    fontSize: 16,
+    color: 'rgba(0, 0, 0, 0.6)',
+    marginBottom:6,
+  },
+  redText: {
+    color: '#db2828',
+    fontSize: 15,
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    alignItems: 'center',
+  },
+  overlayHeader: {
+    fontSize: 33,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: '200',
+    color: '#eae7ff',
+    padding: 10,
+  },
+  overlaySubHeader: {
+    fontSize: 16,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: '200',
+    color: '#eae7ff',
+    padding: 10,
+    paddingTop: 0,
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+  image: {
+    width: 99,
+    height: 138,
+    margin: 6,
+  },
+  itemText: {
+    fontSize: 16,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: '300',
+    color: 'rgba(0, 0, 0, 0.8)',
+    lineHeight: 26,
+  },
+  container: {
+    backgroundColor: '#eae7ff',
+    flex: 1,
   }
 }
 
