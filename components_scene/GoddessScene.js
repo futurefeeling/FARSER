@@ -2,7 +2,6 @@
 
 import NavigationBar from 'react-native-navbar';
 
-import navbarStyle from '../navbarStyle.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import GoddessStore from '../stores/GoddessStore.js';
 import Message from '../components/Message.js';
@@ -20,6 +19,7 @@ import React, {
   Animated,
   Easing,
   TouchableHighlight,
+  ScrollView,
   ActivityIndicatorIOS
 } from 'react-native';
 
@@ -49,14 +49,14 @@ class GoddessScene extends React.Component {
       var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon}/>;
 
       return (
-          <View>
+          <View style={GoddessSceneStyle.container}>
             <NavigationBar
               title={{title: 'GODDESS', tintColor: '#fff'}}
               tintColor={GODDESS_COLOR}
               statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
               leftButton={barIcon}
               />
-            <View style={GoddessSceneStyle.container}>
+            <ScrollView>
               <Text style={{height: 40}}>test</Text>
               <Text style={{height: 40}}>test</Text>
               <Text style={{height: 40}}>test</Text>
@@ -86,7 +86,7 @@ class GoddessScene extends React.Component {
               <Text style={{height: 40}}>test</Text>
               <Text style={{height: 40}}>test</Text>
               <Text style={{height: 40}}>test</Text>
-            </View>
+            </ScrollView>
           </View>
         )
   }
@@ -98,8 +98,7 @@ class GoddessScene extends React.Component {
 
 var GoddessSceneStyle = {
   container: {
-    alignItems: 'center',
-    marginTop: 10
+    flex: 1
   },
   homeIcon: {
     marginLeft: 10
