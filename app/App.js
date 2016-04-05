@@ -9,18 +9,16 @@ var {
   View,
   Image,
   ScrollView,
-  NavigatorIOS,
   Navigator,
-  TouchableHighlight,
-  StatusBarIOS
+  TouchableHighlight
 } = React;
 
 import AppStore from './stores/AppStore.js';
 import AppActionCreators from './actions/AppActionCreators.js';
-import DrawerScene from './components_scene/DrawerScene.js';
-import BlogScene from './components_scene/BlogScene.js';
-import GoddessScene from './components_scene/GoddessScene.js';
-import NewsScene from './components_scene/NewsScene.js';
+import DrawerScene from './module/DrawerScene.js';
+import BlogScene from './module/BlogScene.js';
+import GoddessScene from './module/GoddessScene.js';
+import NewsScene from './module/NewsScene.js';
 
 var assign = require('lodash/assign');
 var Icon = require('react-native-vector-icons/FontAwesome')
@@ -107,7 +105,9 @@ var App = React.createClass({
         <Navigator
           ref='nav'
           initialRoute={initialRoute}
-          renderScene={this.renderScene}/>
+          renderScene={this.renderScene}
+          configureScene={(route, routeStack) => Navigator.SceneConfigs.PushFromRight}
+          />
       </Drawer>
     );
   },

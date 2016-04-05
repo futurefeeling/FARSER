@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import GoddessStore from '../stores/GoddessStore.js';
 import Message from '../components/Message.js';
 import GoddessUtils from '../utils/GoddessUtils.js';
+import MovieDetail from '../components/MovieDetail.js';
 
 var GODDESS_COLOR = '#df7454';
 
@@ -71,9 +72,21 @@ class MovieList extends React.Component {
       .done();
   }
 
+  showDetail(movie) {
+    this.props.navigator.push({
+      component: MovieDetail,
+      passProps: {
+        title: movie.title,
+        id: movie.id
+      }
+    })
+  }
+
   renderMovieList(movie, sectionId, rowId, highlightRow) {
     return (
-      <View key={rowId}>
+      <TouchableHighlight key={rowId}
+        underlayColor='rgba(223,86,34, 0.1)'
+        onPress={()=>this.showDetail(movie)}>
         <View style={styles.item}>
           <View style={styles.itemImage}>
             <Image
@@ -91,7 +104,7 @@ class MovieList extends React.Component {
             </Text>
           </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   }
 
@@ -157,7 +170,7 @@ class MovieList extends React.Component {
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <ActivityIndicatorIOS
               size="large"
-              color="#6435c9"
+              color={GODDESS_COLOR}
             />
           </View>
         </View>
@@ -198,12 +211,6 @@ class GoddessScene extends React.Component {
     GoddessStore.addChangeListener(this._onChange.bind(this));
   }
 
-  _handleOnScroll(e) {
-    // if (this.state.total > this.state.start) {
-    //   this.loadMore();
-    // }
-  }
-
   render() {
       var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon} onPress={this.props.handlePressBtn}/>;
 
@@ -216,7 +223,7 @@ class GoddessScene extends React.Component {
               leftButton={barIcon}
               />
 
-              <MovieList />
+            <MovieList navigator={this.props.navigator}/>
           </View>
         )
   }

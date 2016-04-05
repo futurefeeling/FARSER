@@ -4,6 +4,7 @@ import React from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import NewsSceneStore from '../stores/NewsSceneStore.js';
 import NewsSceneUtils from '../utils/NewsSceneUtils.js';
+import NewsThemeList from '../components/NewsThemeList.js';
 
 var Icon = require('react-native-vector-icons/FontAwesome');
 var { Dimensions } = React;
@@ -24,8 +25,17 @@ function getStatusFromStore() {
 }
 
 class ThemeItem extends React.Component {
-  handlePress(e) {
-    console.log(e.target);
+  handlePress() {
+    var name = this.props.data.name;
+    var themeId = this.props.data.id;
+
+    this.props.navigator.push({
+      component: NewsThemeList,
+      passProps: {
+        themeId: themeId,
+        title: name
+      }
+    })
   }
 
   render() {
@@ -62,8 +72,9 @@ class ThemeList extends React.Component {
   }
 
   render() {
+    var navigator = this.props.navigator;
     var themeList = this.props.themeList.map(
-      (item, index)=> <ThemeItem key={index} data={item}/>
+      (item, index)=> <ThemeItem key={index} data={item} navigator={navigator}/>
     )
 
     return (
@@ -106,7 +117,7 @@ class NewsScene extends React.Component {
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             leftButton={barIcon}
             />
-          <ThemeList themeList={this.state.themeList}/>
+          <ThemeList themeList={this.state.themeList} navigator={this.props.navigator}/>
         </View>
     );
   }

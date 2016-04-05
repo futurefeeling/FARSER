@@ -11,11 +11,11 @@ var {
 
 var { Dimensions } = React;
 
-var GoddessScene = require('../components_scene/GoddessScene.js');
-var BlogScene = require('../components_scene/BlogScene.js');
-var NewsScene = require('../components_scene/NewsScene.js');
-var TagsScene = require('../components_scene/TagsScene.js');
-var SettingScene = require('../components_scene/SettingScene.js');
+var GoddessScene = require('../module/GoddessScene.js');
+var BlogScene = require('../module/BlogScene.js');
+var NewsScene = require('../module/NewsScene.js');
+var TagsScene = require('../module/TagsScene.js');
+var SettingScene = require('../module/SettingScene.js');
 var Icon = require('react-native-vector-icons/FontAwesome');
 var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
 

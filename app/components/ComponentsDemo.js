@@ -16,21 +16,19 @@ var {
 
 var Icon = require('react-native-vector-icons/FontAwesome');
 
-var ComponentsDemo = React.createClass({
-  getInitialState: function() {
-    return {
-      yourState: null
-    }
-  },
+class ComponentsDemo extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-  render: function() {
+  render() {
     return (
       <View style={ComponentsDemoStyle.container}>
         {/* write your code here */}
       </View>
-    );
+    )
   }
-});
+}
 
 var ComponentsDemoStyle = {
   container: {
