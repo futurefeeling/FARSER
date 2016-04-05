@@ -15,17 +15,17 @@ var {
   StatusBarIOS
 } = React;
 
-import AppStore from './stores/AppStore.js';
-import AppActionCreators from './actions/AppActionCreators.js';
-import DrawerScene from './components_scene/DrawerScene.js';
-import BlogScene from './components_scene/BlogScene.js';
-import GoddessScene from './components_scene/GoddessScene.js';
-import NewsScene from './components_scene/NewsScene.js';
+import AppStore from './app/stores/AppStore.js';
+import AppActionCreators from './app/actions/AppActionCreators.js';
+import DrawerScene from './app/components_scene/DrawerScene.js';
+import BlogScene from './app/components_scene/BlogScene.js';
+import GoddessScene from './app/components_scene/GoddessScene.js';
+import NewsScene from './app/components_scene/NewsScene.js';
 
 var assign = require('lodash/assign');
 var Icon = require('react-native-vector-icons/FontAwesome')
 var Drawer = require('react-native-drawer');
-var { DRAWER_OFFSET } = require('./constants/ActionTypes.js');
+var { DRAWER_OFFSET } = require('./app/constants/ActionTypes.js');
 
 function getStatusFromStore() {
   return AppStore.getStore();
