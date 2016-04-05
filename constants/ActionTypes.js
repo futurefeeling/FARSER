@@ -7,7 +7,8 @@ var consts = keyMirror({
   YOUR_ACTION_TYPE: null,
   SET_DRAWER_STATUS: null,
   SET_SCENE: null,
-  GODDESS_RECEIVE_DATA: null
+  GODDESS_RECEIVE_DATA: null,
+  NEWS_SCENE_RECEIVE_THEME_LIST: null
   // other action ...
 });
 

@@ -20,10 +20,11 @@ import AppActionCreators from './actions/AppActionCreators.js';
 import DrawerScene from './components_scene/DrawerScene.js';
 import BlogScene from './components_scene/BlogScene.js';
 import GoddessScene from './components_scene/GoddessScene.js';
+import NewsScene from './components_scene/NewsScene.js';
 
 var assign = require('lodash/assign');
 var Icon = require('react-native-vector-icons/FontAwesome')
-var Drawer = require('./vendor/react-native-drawer');
+var Drawer = require('react-native-drawer');
 var { DRAWER_OFFSET } = require('./constants/ActionTypes.js');
 
 function getStatusFromStore() {
@@ -85,7 +86,7 @@ var FARSER = React.createClass({
 
   render: function() {
     var initialRoute = {
-      component: BlogScene
+      component: NewsScene
     };
 
     return (

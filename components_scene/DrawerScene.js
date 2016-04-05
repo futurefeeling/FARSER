@@ -42,7 +42,6 @@ var DrawerSceneStyle = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#433a34',
-    marginRight: DRAWER_OFFSET,
     justifyContent: 'flex-start'
   }
 });
