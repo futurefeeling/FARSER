@@ -33,6 +33,7 @@ class MovieList extends React.Component {
       count: 20,
       start: 0,
       total: 0,
+      rp: 20
     };
 
     this.dataSource = new ListView.DataSource({
@@ -70,9 +71,9 @@ class MovieList extends React.Component {
       .done();
   }
 
-  renderMovieList(movie) {
+  renderMovieList(movie, sectionId, rowId, highlightRow) {
     return (
-      <View>
+      <View key={rowId}>
         <View style={styles.item}>
           <View style={styles.itemImage}>
             <Image
@@ -107,14 +108,14 @@ class MovieList extends React.Component {
       .done();
   }
 
-  onEndReached() {
+  onEndReached(e) {
     console.log(
       `reached start:${this.state.start}, total:${this.state.total}`
     );
 
-    // if (this.state.total > this.state.start) {
-    //   this.loadMore();
-    // }
+    if (this.state.total > this.state.start) {
+      this.loadMore();
+    }
   }
 
   renderFooter() {
@@ -152,7 +153,7 @@ class MovieList extends React.Component {
   render() {
     if (!this.state.loaded) {
       return (
-        <View style={{backgroundColor: '#eae7ff', flex: 1}}>
+        <View style={{marginTop: 40, flex: 1}}>
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <ActivityIndicatorIOS
               size="large"
@@ -163,16 +164,16 @@ class MovieList extends React.Component {
       );
     }
     return (
-      <View style={{backgroundColor: '#eae7ff', flex: 1}}>
         <ListView
+          style={{backgroundColor: '#eae7ff', flex: 1}}
           renderFooter={this.renderFooter.bind(this)}
           pageSize={this.state.count}
           onEndReached={this.onEndReached.bind(this)}
+          onEndReachedThreshold={this.state.rp}
           initialListSize={this.state.count}
           dataSource={this.dataSource.cloneWithRows(this.state.movies)}
           renderRow={this.renderMovieList.bind(this)}
         />
-      </View>
     );
   }
 }
@@ -197,6 +198,12 @@ class GoddessScene extends React.Component {
     GoddessStore.addChangeListener(this._onChange.bind(this));
   }
 
+  _handleOnScroll(e) {
+    // if (this.state.total > this.state.start) {
+    //   this.loadMore();
+    // }
+  }
+
   render() {
       var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon} onPress={this.props.handlePressBtn}/>;
 
@@ -208,9 +215,8 @@ class GoddessScene extends React.Component {
               statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
               leftButton={barIcon}
               />
-            <ScrollView>
+
               <MovieList />
-            </ScrollView>
           </View>
         )
   }

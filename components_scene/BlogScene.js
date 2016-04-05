@@ -16,22 +16,53 @@ var {
   TouchableHighlight,
 } = React;
 
-var BlogScene = React.createClass({
-  getInitialState: function() {
-    return {
-      start: true
-    }
-  },
+class BlogItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  componetDidMount: function () {
+  render() {
+    return (
+      <View style={BlogItemStyle.container}>
+        <View style={BlogItemStyle.date}>
+          <Text>Nov</Text>
+          <Text>21th</Text>
+        </View>
+        <Text>ni 和</Text>
+      </View>
+    )
+  }
+}
 
-  },
+class BlogItemList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  componentWillUnmount: function () {
+  render() {
+    return (
+      <View>
+        <BlogItem />
+        <BlogItem />
+      </View>
+    )
+  }
+}
 
-  },
+class BlogScene extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-  render: function() {
+  componetDidMount() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  render() {
     var barIcon = <Icon name='bars' size={30} color='#fff' style={BlogSceneStyle.homeIcon}/>
     return (
         <View>
@@ -41,15 +72,40 @@ var BlogScene = React.createClass({
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             leftButton={barIcon}
             />
-          <Text>BlogScene</Text>
+          <BlogItemList style={BlogSceneStyle.blogItemList}/>
         </View>
     );
   }
-});
+}
+
+var BlogItemStyle = {
+  container: {
+    marginTop: 10,
+    paddingTop: 30,
+    paddingBottom: 30,
+    marginLeft: 10,
+    marginRight: 10,
+    position: 'relative'
+  },
+  date: {
+    position: 'absolute',
+    flex: 1,
+    width: 58,
+    height: 58,
+    top: 0,
+    left: -5,
+    borderRadius: 60,
+    borderWidth: 1,
+    borderColor: 'red'
+  }
+}
 
 var BlogSceneStyle = {
   homeIcon: {
     marginLeft: 10
+  },
+  blogItemList: {
+    backgroundColor: '#ccc'
   }
 }
 

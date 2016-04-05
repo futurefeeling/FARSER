@@ -18,7 +18,7 @@ var {
 import AppStore from './stores/AppStore.js';
 import AppActionCreators from './actions/AppActionCreators.js';
 import DrawerScene from './components_scene/DrawerScene.js';
-
+import BlogScene from './components_scene/BlogScene.js';
 import GoddessScene from './components_scene/GoddessScene.js';
 
 var assign = require('lodash/assign');
@@ -85,7 +85,7 @@ var FARSER = React.createClass({
 
   render: function() {
     var initialRoute = {
-      component: GoddessScene
+      component: BlogScene
     };
 
     return (
