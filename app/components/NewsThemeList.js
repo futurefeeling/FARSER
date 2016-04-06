@@ -62,7 +62,6 @@ class NewsList extends React.Component {
   }
 
   showDetail(news) {
-    console.log(news);
     this.props.navigator.push({
       component: NewsDetail,
       passProps: {

@@ -18,6 +18,7 @@ var {
   Image,
   ScrollView,
   TouchableHighlight,
+  WebView
 } = React;
 
 class BlogItem extends React.Component {
@@ -83,14 +84,19 @@ class BlogScene extends React.Component {
       style={BlogSceneStyle.homeIcon}
       onPress={this.props.handlePressBtn}/>
     return (
-        <View>
+        <View style={BlogSceneStyle.container}>
           <NavigationBar
             title={{title: 'BLOG', tintColor: '#fff'}}
             tintColor='#3498db'
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             leftButton={barIcon}
             />
-          <BlogItemList style={BlogSceneStyle.blogItemList}/>
+          {/*<BlogItemList style={BlogSceneStyle.blogItemList}/>*/}
+          <WebView style={BlogSceneStyle.webview}
+            source={{url: `http://showmecode.cc`}}
+            startInLoadingState={true}
+            >
+          </WebView>
         </View>
     );
   }
@@ -154,8 +160,14 @@ var BlogItemListStyle = {
 }
 
 var BlogSceneStyle = {
+  container: {
+    flex: 1
+  },
   homeIcon: {
     marginLeft: 10
+  },
+  webview: {
+    flex: 1
   }
 }
 
