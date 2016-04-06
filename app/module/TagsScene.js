@@ -38,14 +38,12 @@ var TagsScene = React.createClass({
   },
 
   render: function() {
-    var barIcon = <Icon name='bars' size={30} color='#fff' style={TagsSceneStyle.homeIcon}/>
     return (
         <View>
           <NavigationBar
             title={{title: 'TAGS', tintColor: '#fff'}}
             tintColor='#1abc9c'
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
-            leftButton={barIcon}
             />
           <Text>TagsScene</Text>
         </View>
@@ -54,8 +52,8 @@ var TagsScene = React.createClass({
 });
 
 var TagsSceneStyle = {
-  homeIcon: {
-    marginLeft: 10
+  container: {
+    flex: 1
   }
 }
 
