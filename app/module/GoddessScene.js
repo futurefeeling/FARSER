@@ -8,7 +8,7 @@ import Message from '../components/Message.js';
 import GoddessUtils from '../utils/GoddessUtils.js';
 import MovieDetail from '../components/MovieDetail.js';
 
-var GODDESS_COLOR = '#df7454';
+var GODDESS_COLOR = 'rgb(223, 116, 84)';
 
 import React, {
   AppRegistry,
@@ -87,20 +87,20 @@ class MovieList extends React.Component {
       <TouchableHighlight key={rowId}
         underlayColor='rgba(223,86,34, 0.1)'
         onPress={()=>this.showDetail(movie)}>
-        <View style={styles.item}>
-          <View style={styles.itemImage}>
+        <View style={MovieItemStyle.item}>
+          <View style={MovieItemStyle.itemImage}>
             <Image
               source={{uri: movie.images.large}}
-              style={styles.image}
+              style={MovieItemStyle.image}
              />
           </View>
-          <View style={styles.itemContent}>
-            <Text style={styles.itemHeader}>{movie.title}</Text>
-            <Text style={styles.itemMeta}>
+          <View style={MovieItemStyle.itemContent}>
+            <Text style={MovieItemStyle.itemHeader}>{movie.title}</Text>
+            <Text style={MovieItemStyle.itemMeta}>
               {movie.original_title} ( {movie.year} )
             </Text>
-            <Text style={styles.redText}>
-              {movie.rating.average}
+            <Text style={MovieItemStyle.redText}>
+              评分：{movie.rating.average}
             </Text>
           </View>
         </View>
@@ -122,10 +122,6 @@ class MovieList extends React.Component {
   }
 
   onEndReached(e) {
-    console.log(
-      `reached start:${this.state.start}, total:${this.state.total}`
-    );
-
     if (this.state.total > this.state.start) {
       this.loadMore();
     }
@@ -137,7 +133,7 @@ class MovieList extends React.Component {
         <View
           style={{
             marginVertical: 20,
-            paddingBottom: 50,
+            paddingBottom: 18,
             alignSelf: 'center'
           }}
         >
@@ -178,7 +174,7 @@ class MovieList extends React.Component {
     }
     return (
         <ListView
-          style={{backgroundColor: '#eae7ff', flex: 1}}
+          style={{flex: 1}}
           renderFooter={this.renderFooter.bind(this)}
           pageSize={this.state.count}
           onEndReached={this.onEndReached.bind(this)}
@@ -232,7 +228,7 @@ class GoddessScene extends React.Component {
   }
 }
 
-var styles = {
+var MovieItemStyle = {
   item: {
     flexDirection: 'row',
     borderBottomWidth: 1,
@@ -266,29 +262,6 @@ var styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    alignItems: 'center',
-  },
-  overlayHeader: {
-    fontSize: 33,
-    fontFamily: 'Helvetica Neue',
-    fontWeight: '200',
-    color: '#eae7ff',
-    padding: 10,
-  },
-  overlaySubHeader: {
-    fontSize: 16,
-    fontFamily: 'Helvetica Neue',
-    fontWeight: '200',
-    color: '#eae7ff',
-    padding: 10,
-    paddingTop: 0,
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
   image: {
     width: 99,
     height: 138,
@@ -300,10 +273,6 @@ var styles = {
     fontWeight: '300',
     color: 'rgba(0, 0, 0, 0.8)',
     lineHeight: 26,
-  },
-  container: {
-    backgroundColor: '#eae7ff',
-    flex: 1,
   }
 }
 
