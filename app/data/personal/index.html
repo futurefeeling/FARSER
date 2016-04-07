@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Tan</title>
+	<script src="js/jquery.min.js">
+	</script>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!---- start-smoth-scrolling---->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!---- start-smoth-scrolling---->
+</head>
+
+<body>
+	<!------headerbg starts--------->
+	<div id="top-top" class="headerbg">
+		<!------header starts--------->
+		<div class="header">
+			<!------container starts--------->
+			<div class="container">
+				<div class="logo">
+					<a href="#">Resume</a>
+				</div>
+				<!------Navigation starts--------->
+				<div class="nav">
+					<ul>
+						<li><a class="scroll" href="#about">ABOUT</a></li>
+						<li><a class="scroll" href="#skills">SKILLS</a></li>
+						<li><a class="scroll" href="#port">PORTFOLIO</a></li>
+						<li><a class="scroll" href="#contact">CONTACT</a></li>
+					</ul>
+				</div>
+				<!------Navigation ends-------->
+				<div class="clear"></div>
+			</div>
+			<!------container ends--------->
+		</div>
+		<!------header ends--------->
+		<!------Banner starts--------->
+		<div class="banner">
+			<div class="container">
+				<div class="banner-info">
+					<div class="bannerlogo">
+						<img src="images/diamond.png">
+					</div>
+					<div class="bannerhead">
+						<h2>MY NAME <span>谭华恩</span></h2>
+						<h3>WEB DESIGNER</h3>
+						<p>梦想还是要有的, 万一实现了呢？</p>
+						<a class="downarrow scroll" href="#about"><span> </span></a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!------Banner ends-------->
+	</div>
+	<!------Headerbg ends-------->
+	<!------Content starts--------->
+	<div class="content">
+		<!------About starts--------->
+		<div id="about" class="about">
+			<div class="container">
+				<div class="header-section text-center">
+					<h2><span> </span>ABOUT<span> </span></h2>
+				</div>
+				<span><p>你好，首先感谢你的关注。我的名字叫做谭华恩，是一个前端开发工程师。我热爱生活，尽管我很少亲近大自然。我热爱前沿技术，我觉得应用和探索前沿技术实在是一件很酷的事情。我喜欢安静，这样我能够更好地思考。性格有点内向，为人有点木纳。讨厌虚假的事物。我是网络的坚决拥护者，因为我坚信网络能够创造未来。</p></span>
+
+				<div class="years">
+					<h4><b>2013</b></h4>
+					<span><h4>开始接触网络</h4></span>
+					<p><i>这一年我开始真正接触网络，不是为了玩游戏，是为了学到一门手艺。这年一直在大学里面好好巩固计算机基础知识，为此学习了《算法设计》，《博弈论》，《计算机理论》和《计算机原理》等等...</i></p>
+				</div>
+
+				<div class="years">
+					<h4><b>2014</b></h4>
+					<span><h4>COOKA网络创业公司</h4></span>
+					<p><i>这年大二学期末，由于这个学期有接到学校的项目实践，被辅导员推荐给COOKA，于是开始了大型项目之旅，这段旅途很多收获，爱情，友情，事业...</i></p>
+				</div>
+
+				<div class="years">
+					<h4><b>2016</b></h4>
+					<span><h4>COOKA项目上线</h4></span>
+					<div class="labs">
+						<p><i>这年第一次参与的大型外贸电商网站终于上线，无论COOKA未来是否成功，这一次经历的收获已经足够我进行下一段旅程。2016年来临了，今年，我会更加进步，我的生活也肯定会被我自己更好地创造！</i></p>
+					</div>
+				</div>
+				<a class="arrow scroll" href="#skills"><span> </span></a>
+			</div>
+		</div>
+		<!------About Ends--------->
+
+		<!------SKILLS Starts--------->
+		<div id="skills" class="skills">
+			<div class="container">
+				<div class="skills-grids">
+					<div class="skill-section text-center">
+						<h2><span> </span>SKILLS<span> </span></h2>
+					</div>
+					<div class="services_grids">
+						<div id="canvas">
+							<div class="skill-grids text-center">
+								<div class="col-md-3">
+									<div class="skill-grid">
+										<div class="circle" id="circles-1"></div>
+										<h3>HTML</h3>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="skill-grid">
+										<div class="circle" id="circles-2"></div>
+										<h3>LESS</h3>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="skill-grid">
+										<div class="circle" id="circles-3"></div>
+										<h3>JAVASCRIPT</h3>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="skill-grid">
+										<div class="circle" id="circles-4"></div>
+										<h3>WEBPACK</h3>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="skill-grid">
+										<div class="circle" id="circles-5"></div>
+										<h3>REACT</h3>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="skill-grid">
+										<div class="circle" id="circles-6"></div>
+										<h3>REACT NATIVE</h3>
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+					</div>
+					<!---->
+					<script type="text/javascript" src="js/circles.js"></script>
+					<script>
+						var colors = ['#181115', '#30222A'];
+						for (var i = 1; i <= 6; i++) {
+							var child = document.getElementById('circles-' + i);
+							var percentage;
+							switch (i) {
+								case 1:
+									percentage = 90;
+									break;
+								case 2:
+									percentage = 90;
+									break;
+								case 3:
+									percentage = 80;
+									break;
+								case 4:
+									percentage = 80;
+									break;
+								case 5:
+									percentage = 90;
+									break;
+								case 6:
+									percentage = 60;
+									break;
+								default:
+
+							}
+
+							Circles.create({
+								id: child.id,
+								percentage: percentage,
+								radius: 80,
+								width: 15,
+								number: percentage,
+								text: '',
+								colors: colors
+							});
+						}
+					</script>
+
+					<!--/-->
+				</div>
+			</div>
+			<a class="down scroll" href="#port"><span> </span></a>
+		</div>
+	</div>
+	<!------SKILLS Ends--------->
+	<!------PORTFOLIO Starts--------->
+	<div id="port" class="Portfolio">
+		<div class="Portfolio-section text-center">
+			<h2><span> </span>PORTFOLIO<span> </span></h2>
+		</div>
+		<div class="container">
+			<div class="portfolio-grids">
+				<div class="portfolio-grid col-md-4">
+					<a href="http://ss1.gdufe.edu.cn"><img src="images/monitr1.png"></a>
+					<p>值得纪念的第一个项目，是学校一个校区的首页</p>
+					<a class="rightarrow" href="#"><span> </span></a>
+				</div>
+				<div class="portfolio-grid col-md-4">
+					<a href="http://www.cookabuy.com"><img src="images/monitr2.png"></a>
+					<p>现在在做的大型跨境电商网站，主要负责前端页面设计，同时，也有WEB APP 版本</p>
+					<a class="rightarrow" href="#"><span> </span></a>
+				</div>
+				<div class="portfolio-grid col-md-4">
+					<a href="http://www.showmecode.cc/"><img src="images/monitr3.png"></a>
+					<p>个人的技术博客</p>
+					<a class="rightarrow" href="#"><span> </span></a>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			<a class="portdown scroll" href="#contact"><span> </span></a>
+
+		</div>
+	</div>
+	</div>
+	<!------Content Ends-------->
+
+	<!------FOOTER Starts----------->
+	<div id="contact" class="footer">
+		<div class="container">
+
+			<div class="contact-section text-center">
+				<h2><span> </span>CONTACT<span> </span></h2>
+			</div>
+			<div class="row">
+
+				<div class="col-md-6">
+					<div class="footer-left">
+						<div class="social-icons">
+							<a href="http://www.linkedin.com/in/%E5%8D%8E%E6%81%A9-%E8%B0%AD-4a9577116?trk=hp-identity-name"><img src="images/in.png"></a>
+							<a href="https://twitter.com/tan_hie"><img src="images/twt.png"></a>
+							<a href="https://www.facebook.com/huaentan"><img src="images/fb.png"></a>
+						</div>
+						<p>有任何问题你都可以联系我，我很乐意倾听你的想法，并感谢你的想法给我带来的价值</p>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="footer-right">
+						<div class="form">
+							<form>
+								<input type="text" class="text" value="Name" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Name';}">
+								<input type="text" class="text" value="E-mail" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'E-mail';}">
+								<textarea rows="2" cols="70" onFocus="if(this.value == 'Your Message') this.value='';" onBlur="if(this.value == '') this.value='Your Message';">Your Message</textarea>
+								<div class="clear"> </div>
+								<input type="submit" value="SEND">
+							</form>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<a class="up scroll" href="#top-top"><span> </span></a>
+	</div>
+</body>
+</html>

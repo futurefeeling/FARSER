@@ -12,8 +12,10 @@ module.exports = {
     })
     .accept('json')
     .end(function(err, res) {
-      var data = JSON.parse(res.text);
-      TagsSceneActionCreators.receiveData(data);
+      if (res.text) {
+        var data = JSON.parse(res.text);
+        TagsSceneActionCreators.receiveData(data);
+      }
     })
   },
 

@@ -17,7 +17,10 @@ var {
   ScrollView,
   NavigatorIOS,
   TouchableHighlight,
+  WebView
 } = React;
+
+var ABOUT_COLOR = 'rgb(34, 24, 27)';
 
 var AboutScene = React.createClass({
   getInitialState: function() {
@@ -36,21 +39,27 @@ var AboutScene = React.createClass({
 
   render: function() {
     return (
-        <View>
+        <View style={AboutSceneStyle.container}>
           <NavigationBar
             title={{title: 'ABOUT', tintColor: '#fff'}}
-            tintColor='#433a34'
+            tintColor={ABOUT_COLOR}
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             />
-          <Text>AboutScene</Text>
+          <WebView style={AboutSceneStyle.webview}
+              source={require('../data/personal/index.html')}
+              startInLoadingState={true}>
+          </WebView>
         </View>
     );
   }
 });
 
 var AboutSceneStyle = {
-  homeIcon: {
-    marginLeft: 10
+  container: {
+    flex: 1
+  },
+  webview: {
+    flex: 1
   }
 }
 

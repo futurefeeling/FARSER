@@ -213,7 +213,7 @@ class GoddessScene extends React.Component {
       return (
           <View style={GoddessSceneStyle.container}>
             <NavigationBar
-              title={{title: 'GODDESS', tintColor: '#fff'}}
+              title={{title: 'MOVIE TOP 250', tintColor: '#fff'}}
               tintColor={GODDESS_COLOR}
               statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
               />
