@@ -103,11 +103,6 @@ class NewsScene extends React.Component {
   }
 
   render() {
-    var barIcon = (
-      <Icon name='bars' size={30} color='#fff'
-      style={NewsSceneStyle.homeIcon}
-      onPress={this.props.handlePressBtn}/>
-    );
 
     return (
         <View style={{flex: 1}}>
@@ -115,7 +110,6 @@ class NewsScene extends React.Component {
             title={{title: 'NEWS', tintColor: '#fff'}}
             tintColor='#34495e'
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
-            leftButton={barIcon}
             />
           <ThemeList themeList={this.state.themeList} navigator={this.props.navigator}/>
         </View>

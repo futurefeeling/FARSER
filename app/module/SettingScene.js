@@ -38,14 +38,12 @@ var SettingScene = React.createClass({
   },
 
   render: function() {
-    var barIcon = <Icon name='bars' size={30} color='#fff' style={SettingSceneStyle.homeIcon}/>
     return (
         <View>
           <NavigationBar
             title={{title: 'SETTING', tintColor: '#fff'}}
             tintColor='#433a34'
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
-            leftButton={barIcon}
             />
           <Text>SettingScene</Text>
         </View>

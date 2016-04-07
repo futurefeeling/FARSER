@@ -85,7 +85,7 @@ var App = React.createClass({
 
   render: function() {
     var initialRoute = {
-      component: TagsScene
+      component: GoddessScene
     };
 
     return (

@@ -14,6 +14,7 @@
     "keymirror": "^0.1.1",
     "lodash": "^4.5.1",
     "react-native": "^0.20.0",
+    "react-native-button": "^1.4.2",
     "react-native-drawer": "^1.16.7",
     "react-native-icons": "^0.7.1",
     "react-native-item-checkbox": "^1.0.4",

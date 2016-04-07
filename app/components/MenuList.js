@@ -69,13 +69,13 @@ var MenuList = React.createClass({
         </TouchableHighlight>
         <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'tags')}>
           <View style={MenuListStyle.menuItem}>
-            <Icon name='tags' color='#29d445' style={MenuListStyle.menuItemIcon}/>
+            <Icon name='tags' color='rgb(31,31,46)' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>TAGS</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'setting')}>
           <View style={MenuListStyle.menuItem}>
-            <Icon name='wrench' color='#111' style={MenuListStyle.menuItemIcon}/>
+            <Icon name='wrench' color='#C0392B' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>SETTING</Text>
           </View>
         </TouchableHighlight>

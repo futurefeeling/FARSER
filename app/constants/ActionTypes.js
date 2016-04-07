@@ -10,7 +10,9 @@ var consts = keyMirror({
   GODDESS_RECEIVE_DATA: null,
   NEWS_SCENE_RECEIVE_THEME_LIST: null,
   NEWS_DETAIL_RECEIVE_DATA: null,
-  TAGS_SCENE_RECEIVE_DATA: null
+  TAGS_SCENE_RECEIVE_DATA: null,
+  TAGS_SCENE_ADD_TAG: null,
+  TAGS_SCENE_CHANGE_TAG_STATUS: null
   // other action ...
 });
 

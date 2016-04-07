@@ -212,7 +212,7 @@ class GoddessScene extends React.Component {
   }
 
   render() {
-      var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon} onPress={this.props.handlePressBtn}/>;
+      // var barIcon = <Icon name='bars' size={30} color='#fff' style={GoddessSceneStyle.homeIcon} onPress={this.props.handlePressBtn}/>;
 
       return (
           <View style={GoddessSceneStyle.container}>
@@ -220,7 +220,6 @@ class GoddessScene extends React.Component {
               title={{title: 'GODDESS', tintColor: '#fff'}}
               tintColor={GODDESS_COLOR}
               statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
-              leftButton={barIcon}
               />
 
             <MovieList navigator={this.props.navigator}/>
