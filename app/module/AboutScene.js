@@ -17,12 +17,9 @@ var {
   ScrollView,
   NavigatorIOS,
   TouchableHighlight,
-  ActivityIndicatorIOS,
-  AlertIOS,
-  StatusBarIOS,
 } = React;
 
-var SettingScene = React.createClass({
+var AboutScene = React.createClass({
   getInitialState: function() {
     return {
       start: true
@@ -41,20 +38,20 @@ var SettingScene = React.createClass({
     return (
         <View>
           <NavigationBar
-            title={{title: 'SETTING', tintColor: '#fff'}}
+            title={{title: 'ABOUT', tintColor: '#fff'}}
             tintColor='#433a34'
             statusBar={{style: 'light-content', hidden: false, showAnimation:'none'}}
             />
-          <Text>SettingScene</Text>
+          <Text>AboutScene</Text>
         </View>
     );
   }
 });
 
-var SettingSceneStyle = {
+var AboutSceneStyle = {
   homeIcon: {
     marginLeft: 10
   }
 }
 
-module.exports = SettingScene;
+module.exports = AboutScene;

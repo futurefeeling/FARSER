@@ -15,7 +15,7 @@ var GoddessScene = require('../module/GoddessScene.js');
 var BlogScene = require('../module/BlogScene.js');
 var NewsScene = require('../module/NewsScene.js');
 var TagsScene = require('../module/TagsScene.js');
-var SettingScene = require('../module/SettingScene.js');
+var AboutScene = require('../module/AboutScene.js');
 var Icon = require('react-native-vector-icons/FontAwesome');
 var { DRAWER_OFFSET } = require('../constants/ActionTypes.js');
 
@@ -26,7 +26,7 @@ var ROUTES = {
   blog: BlogScene,
   news: NewsScene,
   tags: TagsScene,
-  setting: SettingScene
+  about: AboutScene
 }
 
 var MenuList = React.createClass({
@@ -73,10 +73,10 @@ var MenuList = React.createClass({
             <Text style={MenuListStyle.menuItemText}>TAGS</Text>
           </View>
         </TouchableHighlight>
-        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'setting')}>
+        <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'about')}>
           <View style={MenuListStyle.menuItem}>
             <Icon name='wrench' color='#C0392B' style={MenuListStyle.menuItemIcon}/>
-            <Text style={MenuListStyle.menuItemText}>SETTING</Text>
+            <Text style={MenuListStyle.menuItemText}>ABOUT</Text>
           </View>
         </TouchableHighlight>
       </View>
