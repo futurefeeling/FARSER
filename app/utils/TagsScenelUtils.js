@@ -1,0 +1,19 @@
+import React from 'react-native';
+import TagsSceneActionCreators from '../actions/TagsSceneActionCreators.js';
+var request = require('superagent');
+
+module.exports = {
+  getData: function(status){
+    request
+    .get('http://www.farzer.com/todo/todo.get.handle.php')
+    .type('application/json')
+    .query({
+      'status': status
+    })
+    .accept('json')
+    .end(function(err, res) {
+      var data = JSON.parse(res.text);
+      TagsSceneActionCreators.receiveData(data);
+    })
+  }
+}

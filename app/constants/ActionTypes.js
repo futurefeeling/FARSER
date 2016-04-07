@@ -9,7 +9,8 @@ var consts = keyMirror({
   SET_SCENE: null,
   GODDESS_RECEIVE_DATA: null,
   NEWS_SCENE_RECEIVE_THEME_LIST: null,
-  NEWS_DETAIL_RECEIVE_DATA: null
+  NEWS_DETAIL_RECEIVE_DATA: null,
+  TAGS_SCENE_RECEIVE_DATA: null
   // other action ...
 });
 

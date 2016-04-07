@@ -15,6 +15,8 @@
     "lodash": "^4.5.1",
     "react-native": "^0.20.0",
     "react-native-drawer": "^1.16.7",
+    "react-native-icons": "^0.7.1",
+    "react-native-item-checkbox": "^1.0.4",
     "react-native-navbar": "^1.2.2",
     "react-native-refresh-infinite-listview": "^1.0.2",
     "react-native-vector-icons": "^1.2.1",
