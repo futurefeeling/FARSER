@@ -21,7 +21,7 @@ var {
   TextInput
 } = React;
 
-var TAGS_COLOR = 'rgb(31,31,46)';
+var TAGS_COLOR = '#433a34';
 var CHECKBOX_BG = '#4B5161';
 var NOT_FINISHED_COLOR = 'rgb(83, 90, 108)';
 
@@ -33,7 +33,7 @@ var TagStyle = {
   container: {
     flexDirection: 'row',
     backgroundColor: CHECKBOX_BG,
-    borderRightWidth: 8,
+    borderRightWidth: 6,
     borderBottomWidth: 1,
     borderBottomColor: '#a8a6a6'
   },
@@ -77,7 +77,7 @@ class Tag extends React.Component {
 
     var rightColor, randomInt;
     var colorMap = ['#1ABC9C', '#3498DB', '#9B59B6','#95A5A6','#F1C40F','#E74C3C'];
-    randomInt = this.getRandomInt(0, 6);
+    randomInt = this.getRandomInt(0, 5);
     rightColor = colorMap[randomInt];
     return (
       <View style={assign({}, TagStyle.container, {borderRightColor: rightColor})}>

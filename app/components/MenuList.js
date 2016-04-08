@@ -69,7 +69,7 @@ var MenuList = React.createClass({
         </TouchableHighlight>
         <TouchableHighlight underlayColor={underlayColor} onPress={this.handleClickMenu.bind(this, 'tags')}>
           <View style={MenuListStyle.menuItem}>
-            <Icon name='tags' color='rgb(31,31,46)' style={MenuListStyle.menuItemIcon}/>
+            <Icon name='tags' color='#4B5161' style={MenuListStyle.menuItemIcon}/>
             <Text style={MenuListStyle.menuItemText}>TAGS</Text>
           </View>
         </TouchableHighlight>
