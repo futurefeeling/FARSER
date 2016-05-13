@@ -4,7 +4,9 @@ FARSER - 我的私人订制APP
 FARSER APP powered by React Native
 FARSER APP 由 React Native 强力驱动
 
-## Running Environment(mac)
+## Running Environment (mac)
+> if you are in android, please config you own environment
+
 1. install `brew`, go to brew [homepage](http://brew.sh/) to down it.
 2. install `node`.
  - if you had installed the brew, run `brew install node`
