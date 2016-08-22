@@ -1,4 +1,4 @@
-FARSER - 我的私人订制APP
+FARSER-我的私人订制APP
 ================
 
 FARSER APP powered by React Native
